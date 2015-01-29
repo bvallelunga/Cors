@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101010;
+}
+
+body #logo {
+  position: relative;
+  width: 100%;
+  margin: 270px 0 0 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 65px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 0 4px 0 #000, 0 -4px 0 #000, -4px 0 0 #000, 4px 0 0 #000;
+  z-index: 1;
+}
+
+body #play {
+  position: relative;
+  z-index: 1;
+  margin: 30px auto;
+  padding: 20px;
+  min-width: 300px;
+  width: 25%;
+  text-align: center;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 32px;
+  background: #6FAF35;
+  box-shadow: 0 6px 0 #4D7A25, 0 -6px 0 #4D7A25, -6px 0 0 #4D7A25, 6px 0 0 #4D7A25;
+  cursor: pointer;
+}
+
+body #play:hover {
+  background: #659e2e;
+  box-shadow: 0 6px 0 #426a1f, 0 -6px 0 #426a1f, -6px 0 0 #426a1f, 6px 0 0 #426a1f;
+}
+
+body #play:hover:active {
+  background: #598d29;
+  box-shadow: 0 6px 0 #385a1a, 0 -6px 0 #385a1a, -6px 0 0 #385a1a, 6px 0 0 #385a1a;
+}
+
+body #background {
+  opacity: 0.3;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
