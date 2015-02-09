@@ -10,11 +10,21 @@
     <!-- Javascript -->
     <script type="text/javascript" src="javascript/createJS/combined.js"></script>
     <script type="text/javascript" src="javascript/createJS/cssPlugin.js"></script>
-    <script type="text/javascript" src="javascript/core.js"></script>
+    <script type="text/javascript" src="javascript/jquery/jquery.js"></script>
+    <script type="text/javascript" src="javascript/jquery/center.js"></script>
+    <script type="text/javascript" src="javascript/game/background.js"></script>
+    <script type="text/javascript" src="javascript/game/ship.js"></script>
+    <script type="text/javascript" src="javascript/game/asteriod.js"></script>
+    <script type="text/javascript" src="javascript/game/core.js"></script>
   </head>
-  <body onload="init()">
-    <div id="logo">CORS</div>
-    <div id="play">Play Game</div>
+  <body>
+    <div id="starter">
+      <div id="logo">CORS</div>
+      <div id="play">Play Game</div>
+    </div>
+    <div id="game">
+      <canvas id="canvas"></canvas>
+    </div>
     <div id="background"></div>
   </body>
 </html>
