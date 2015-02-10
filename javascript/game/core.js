@@ -37,8 +37,6 @@ $(function() {
 
 	// Configure Ship
 	ship.image.onload = function() {
-    ship.regX = -WIDTH/2 + ship.image.width/2
-  	ship.regY = -HEIGHT + ship.image.height*2
   	stage.addChild(ship)
   }
 
@@ -62,7 +60,7 @@ function resize() {
   canvas = $("#canvas").width(WIDTH).height(HEIGHT)[0]
   canvas.width = WIDTH
 	canvas.height = HEIGHT
-	ship.regY = -HEIGHT + ship.image.height*2
+  ship.y = HEIGHT - ship.image.height*1.5
 }
 
 function startGame() {
@@ -79,8 +77,8 @@ function createGame() {
   score = 0
   time = 0
   energy = 100
-  ship.regX = -WIDTH/2 + ship.image.width/2
-  ship.regY = -HEIGHT + ship.image.height*1.5
+  ship.x = WIDTH/2 - ship.image.width/2
+  ship.y = HEIGHT - ship.image.height*1.5
   stage.update()
 }
 
@@ -103,18 +101,25 @@ function endGame() {
 function tick(event) {
   if(ACTIVE) {
     // Move Ship
-    if(GO_LEFT && ship.regX + 20 < 0) ship.regX += SPEED
-    if(GO_RIGHT && ship.regX - ship.image.width - 20 > -WIDTH) ship.regX -= SPEED
+    if(GO_LEFT && ship.x - 20 > 0) ship.x -= SPEED
+    if(GO_RIGHT && ship.x + ship.image.width + 20 < WIDTH) ship.x += SPEED
 
     // Move Rocks
+    var hit = Math.max(ship.image.width, ship.image.height)
     for(i = 0; i < ROCK_BELT.length; i++) {
   		ROCK_BELT[i].y += Math.floor(SPEED / 2)
   		ROCK_BELT[i].rotation += ROCK_BELT[i].spin
 
+      // Remove Old Rocks
   		if(ROCK_BELT[i].y - ROCK_BELT[i].size > HEIGHT) {
     		stage.removeChild(ROCK_BELT[i]);
     		ROCK_BELT.splice(i, 1)
   		}
+
+  		// Check For Collision
+  		if(ROCK_BELT[i].hitRadius(ship.x, ship.y, 0)) {
+  		  return endGame()
+		  }
   	}
 
   	// Create New Rocks
@@ -132,7 +137,7 @@ function tick(event) {
   	energyBox.removeClass("mid low")
 
   	if(energy < 0) {
-    	endGame()
+    	return endGame()
     	energyBox.addClass("low")
   	} else if(energy < 20) {
       energyBox.addClass("low")
