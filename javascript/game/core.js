@@ -80,7 +80,7 @@ function createGame() {
   time = 0
   energy = 100
   ship.regX = -WIDTH/2 + ship.image.width/2
-  ship.regY = -HEIGHT + ship.image.height*2
+  ship.regY = -HEIGHT + ship.image.height*1.5
   stage.update()
 }
 
@@ -92,13 +92,19 @@ function endGame() {
   setTimeout(function() {
     $("#starter").fadeIn(500)
   }, 550)
+
+  ROCK_BELT.forEach(function(rock) {
+    stage.removeChild(rock)
+  })
+
+  ROCK_BELT = []
 }
 
 function tick(event) {
   if(ACTIVE) {
     // Move Ship
-    if(GO_LEFT) ship.x -= SPEED
-    if(GO_RIGHT) ship.x += SPEED
+    if(GO_LEFT && ship.regX + 20 < 0) ship.regX += SPEED
+    if(GO_RIGHT && ship.regX - ship.image.width - 20 > -WIDTH) ship.regX -= SPEED
 
     // Move Rocks
     for(i = 0; i < ROCK_BELT.length; i++) {
@@ -144,6 +150,7 @@ function tick(event) {
 
   	scoreBox.text(score)
 
+    // Update Stage
     stage.update(event)
   }
 }
