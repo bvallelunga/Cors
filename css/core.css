@@ -1,8 +1,9 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #101010;
+  background: #000;
   overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
 }
 
 body #starter {
@@ -14,7 +15,6 @@ body #starter {
 
 body #starter #logo {
   width: 100%;
-  font-family: 'Press Start 2P', cursive;
   font-size: 65px;
   color: #fff;
   text-align: center;
@@ -28,7 +28,6 @@ body #starter #play {
   width: 100%;
   text-align: center;
   color: #fff;
-  font-family: 'Press Start 2P', cursive;
   font-size: 32px;
   background: #6FAF35;
   box-shadow: 0 6px 0 #4D7A25, 0 -6px 0 #4D7A25, -6px 0 0 #4D7A25, 6px 0 0 #4D7A25;
@@ -46,8 +45,73 @@ body #starter #play:hover:active {
   box-shadow: 0 6px 0 #385a1a, 0 -6px 0 #385a1a, -6px 0 0 #385a1a, 6px 0 0 #385a1a;
 }
 
+body #starter #arrowKeys {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 2;
+  width: 200px;
+}
+
+body #starter #arrowKeys div {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+body #starter #arrowKeys img {
+  width: 100%;
+  display: block;
+}
+
 body #game {
   display: none;
+}
+
+body #score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  line-height: 35px;
+  z-index: 2;
+  font-size: 22px;
+}
+
+body #energy-bar {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  padding: 2px;
+  width: 180px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 0 #6FAF35, 0 -4px 0 #6FAF35, -4px 0 0 #6FAF35, 4px 0 0 #6FAF35;
+}
+
+body #energy-bar #bar {
+  width: 100%;
+  height: 100%;
+  background: #6FAF35;
+}
+
+body #energy-bar.mid {
+  box-shadow: 0 4px 0 #2E97DE, 0 -4px 0 #2E97DE, -4px 0 0 #2E97DE, 4px 0 0 #2E97DE;
+}
+
+body #energy-bar.mid #bar {
+  background: #46AADF;
+}
+
+body #energy-bar.low {
+  box-shadow: 0 4px 0 #C12D37, 0 -4px 0 #C12D37, -4px 0 0 #C12D37, 4px 0 0 #C12D37;
+}
+
+body #energy-bar.low #bar {
+  background: #C12D37;
 }
 
 body #game #canvas {

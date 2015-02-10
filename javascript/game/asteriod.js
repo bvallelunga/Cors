@@ -9,8 +9,7 @@
 	var p = createjs.extend(Asteriod, createjs.Shape);
 
 // static properties:
-	Asteriod.LRG_ROCK = 40;
-	Asteriod.MED_ROCK = 20;
+	Asteriod.MED_ROCK = 30;
 	Asteriod.SML_ROCK = 10;
 
 // public properties:
@@ -23,8 +22,6 @@
 
 	p.vX;		//velocity X
 	p.vY;		//velocity Y
-
-	p.active;	//is it active
 
 
 // public methods:
@@ -41,6 +38,7 @@
 		//setup
 		this.graphics.clear();
 		this.graphics.beginStroke("#FFFFFF");
+		this.graphics.beginFill('rgba(255, 255, 255, 0.2)');
 		this.graphics.moveTo(0, size);
 
 		//draw spaceRock
@@ -67,52 +65,12 @@
 
 		//pick a random direction to move in and base the rotation off of speed
 		var angle = Math.random() * (Math.PI * 2);
-		this.vX = Math.sin(angle) * (5 - size / 15);
-		this.vY = Math.cos(angle) * (5 - size / 15);
-		this.spin = (Math.random() + 0.2 ) * this.vX;
+		this.x = Math.floor(Math.random() * WIDTH)
+		this.y = -Math.floor(Math.random() * HEIGHT * 2.5) - size;
+		this.spin = (Math.random() + 0.2 ) * Math.sin(angle) * (5 - size / 15);
 
 		//associate score with size
 		this.score = (5 - size / 10) * 100;
-		this.active = true;
-	}
-
-	//handle what a spaceRock does to itself every frame
-	p.tick = function (event) {
-		this.rotation += this.spin;
-		this.x += this.vX;
-		this.y += this.vY;
-	}
-
-	//position the spaceRock so it floats on screen
-	p.floatOnScreen = function (width, height) {
-		//base bias on real estate and pick a side or top/bottom
-		if (Math.random() * (width + height) > width) {
-			//side; ensure velocity pushes it on screen
-			if (this.vX > 0) {
-				this.x = -2 * this.bounds;
-			} else {
-				this.x = 2 * this.bounds + width;
-			}
-			//randomly position along other dimension
-			if (this.vY > 0) {
-				this.y = Math.random() * height * 0.5;
-			} else {
-				this.y = Math.random() * height * 0.5 + 0.5 * height;
-			}
-		} else {
-			//top/bottom; ensure velocity pushes it on screen
-			if (this.vY > 0) {
-				this.y = -2 * this.bounds;
-			} else {
-				this.y = 2 * this.bounds + height;
-			}
-			//randomly position along other dimension
-			if (this.vX > 0) {
-				this.x = Math.random() * width * 0.5;
-			} else {
-				this.x = Math.random() * width * 0.5 + 0.5 * width;
-			}
-		}
 	}
 
 	p.hitPoint = function (tX, tY) {
