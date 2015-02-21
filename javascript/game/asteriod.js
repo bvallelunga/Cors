@@ -9,6 +9,7 @@
 	var p = createjs.extend(Asteriod, createjs.Shape);
 
 // static properties:
+  Asteriod.MAX_VALUE = 30;
 	Asteriod.MED_ROCK = 30;
 	Asteriod.SML_ROCK = 10;
 
@@ -34,6 +35,7 @@
 		this.size = size;
 		this.hit = size;
 		this.bounds = 0;
+		this.drilled = false;
 
 		//setup
 		this.graphics.clear();
@@ -77,24 +79,25 @@
 		return this.hitRadius(tX, tY, 0);
 	}
 
-	p.hitRadius = function (tX, tY, tHit) {
+	p.hitRadius = function (tX, tY, tHitX, tHitY) {
 		//early returns speed it up
-		if (tX - tHit > this.x + this.hit) {
+		if (tX - tHitX > this.x + this.hit) {
 			return;
 		}
-		if (tX + tHit < this.x - this.hit) {
-			return;
-		}
-
-		if (tY - tHit > this.y + this.hit) {
+		if (tX + tHitX < this.x - this.hit) {
 			return;
 		}
 
-		if (tY + tHit < this.y - this.hit) {
+		if (tY - tHitY > this.y + this.hit) {
+			return;
+		}
+
+		if (tY + tHitY < this.y - this.hit) {
 			return;
 		}
 
 		//now do the circle distance test
+		var tHit = Math.min(tHitX, tHitY);
 		return this.hit + tHit > Math.sqrt(Math.pow(Math.abs(this.x - tX), 2) + Math.pow(Math.abs(this.y - tY), 2));
 	}
 

@@ -70,7 +70,7 @@ body #game {
   display: none;
 }
 
-body #score {
+body #game #score {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -80,7 +80,7 @@ body #score {
   font-size: 22px;
 }
 
-body #energy-bar {
+body #game #energy-bar {
   position: absolute;
   z-index: 2;
   top: 20px;
@@ -92,26 +92,66 @@ body #energy-bar {
   box-shadow: 0 4px 0 #6FAF35, 0 -4px 0 #6FAF35, -4px 0 0 #6FAF35, 4px 0 0 #6FAF35;
 }
 
-body #energy-bar #bar {
+body #game #energy-bar #bar {
   width: 100%;
   height: 100%;
   background: #6FAF35;
 }
 
-body #energy-bar.mid {
+body #game #energy-bar.mid {
   box-shadow: 0 4px 0 #2E97DE, 0 -4px 0 #2E97DE, -4px 0 0 #2E97DE, 4px 0 0 #2E97DE;
 }
 
-body #energy-bar.mid #bar {
+body #game #energy-bar.mid #bar {
   background: #46AADF;
 }
 
-body #energy-bar.low {
+body #game #energy-bar.low {
   box-shadow: 0 4px 0 #C12D37, 0 -4px 0 #C12D37, -4px 0 0 #C12D37, 4px 0 0 #C12D37;
 }
 
-body #energy-bar.low #bar {
+body #game #energy-bar.low #bar {
   background: #C12D37;
+}
+
+body #game #drilling {
+  position: absolute;
+  z-index: 2;
+  width: 450px;
+  height: 450px;
+  background: #fff;
+  border-radius: 50%;
+  display: none;
+  overflow: hidden;
+}
+
+body #game #drilling #drill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #6FAF35;
+  z-index: 2;
+}
+
+body #game #drilling #space {
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+  z-index: 1;
+}
+
+body #game #drilling.mid #drill {
+  background: #2E97DE;
+}
+
+body #game #drilling.low #drill {
+  background: #C12D37;
+}
+
+body #game #drilling.depleted #drill {
+  background: #a7262e;
 }
 
 body #game #canvas {

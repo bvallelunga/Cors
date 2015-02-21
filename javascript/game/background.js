@@ -1,5 +1,7 @@
-function createLanding() {
+function createLayout() {
   $("#starter").hAlign().vAlign().fadeIn(500)
+  $("#game #drilling").hAlign().vAlign()
+  $("#game #drilling #space").vAlign()
 }
 
 function createBackground() {
