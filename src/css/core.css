@@ -10,7 +10,7 @@ body #starter {
   position: absolute;
   z-index: 2;
   display: none;
-  width: 400px;
+  width: 450px;
 }
 
 body #starter #logo {
