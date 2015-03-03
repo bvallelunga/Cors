@@ -1,7 +1,7 @@
 $(function() {
   // Gobal Variables
-  window.SPEED = 10
-  window.DIFFICULTY = 5
+  window.SPEED = 30
+  window.DIFFICULTY = 10
   window.ROCK_TIME = 110
   window.ROCK_COUNT = 10
   window.ROCK_BELT = []
@@ -14,7 +14,6 @@ $(function() {
   window.KEYCODE_LEFT = 37
   window.KEYCODE_RIGHT = 39
   window.KEYCODE_DOWN = 36
-
 
   window.GO_LEFT = false
   window.GO_RIGHT = false
@@ -30,6 +29,7 @@ $(function() {
   window.ship = new createjs.Bitmap("images/ship.png")
   window.game = $("#game")
   window.starter = $("#starter")
+  window.starterScores = $("#starter #highscores")
   window.starterPlay = $("#starter #play")
   window.energyBox = $("#game #energy-bar")
   window.energyBar = $("#game #energy-bar #bar")
@@ -124,8 +124,15 @@ function createGame() {
 
 function endGame() {
   ACTIVE = false
+  name = prompt("Game Over!, Enter your name for high scores...")
 
   game.fadeOut(500)
+  starterScores.show().append("                                         \
+    <div class='score'>                                                 \
+      <div class='name'>" + name + "</div>                              \
+      <div class='cors'>" + score + "</div>                             \
+    </div>                                                              \
+  ")
 
   setTimeout(function() {
     starter.fadeIn(500)
@@ -144,8 +151,7 @@ function tick(event) {
       // Check if to stop drilling
       if(GO_SPACE) return stopDrilling()
 
-      // Decrease Drill
-      drill -= DIFFICULTY * (0.4 + ((Asteriod.MAX_VALUE - drillRock.size)/200))
+      // Update Drill
       drillBox.removeClass("mid low depleted")
 
       if(drill % 5 == 0) {
@@ -164,6 +170,8 @@ function tick(event) {
         drillBox.addClass("mid")
     	}
 
+      // Decrease Drill
+      drill -= DIFFICULTY * (0.4 + ((Asteriod.MAX_VALUE - drillRock.size)/200))
       drillBar.height(drill + "%")
     } else {
       // Move Ship

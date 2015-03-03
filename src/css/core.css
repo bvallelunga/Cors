@@ -7,10 +7,11 @@ html, body {
 }
 
 body #starter {
-  position: absolute;
+  position: relative;
   z-index: 2;
   display: none;
-  width: 450px;
+  width: 500px;
+  margin: 125px auto 0;
 }
 
 body #starter #logo {
@@ -20,6 +21,35 @@ body #starter #logo {
   text-align: center;
   letter-spacing: 5px;
   text-shadow: 0 4px 0 #000, 0 -4px 0 #000, -4px 0 0 #000, 4px 0 0 #000;
+}
+
+body #starter #highscores {
+  color: #fff;
+  border: dashed 5px #fff;
+  padding: 20px;
+  margin: 30px -6px;
+  display: none;
+}
+
+body #starter #highscores #title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+body #starter #highscores .score {
+  margin-top: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  zoom: 1;
+}
+
+body #starter #highscores .score .name {
+  float: left;
+}
+
+body #starter #highscores .score .cors {
+  float: right;
 }
 
 body #starter #play {
