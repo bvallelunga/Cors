@@ -149,7 +149,8 @@ body #game #drilling {
   z-index: 2;
   width: 450px;
   height: 450px;
-  background: #fff;
+  background: url("/images/asteriod.png");
+  background-size: cover;
   border-radius: 50%;
   display: none;
   overflow: hidden;
@@ -167,9 +168,9 @@ body #game #drilling #drill {
 body #game #drilling #space {
   width: 100%;
   text-align: center;
-  color: #333;
   font-size: 18px;
   z-index: 1;
+  color: #fff;
 }
 
 body #game #drilling.mid #drill {
