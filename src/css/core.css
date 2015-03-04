@@ -6,6 +6,14 @@ html, body {
   font-family: 'Press Start 2P', cursive;
 }
 
+body #loading {
+  position: absolute;
+  z-index: 2;
+  display: none;
+  width: 500px;
+  height: 500px;
+}
+
 body #starter {
   position: absolute;
   z-index: 2;

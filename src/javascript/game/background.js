@@ -1,7 +1,16 @@
 function createLayout() {
-  $("#starter").hAlign().vAlign().fadeIn(500)
-  $("#game #drilling").hAlign().vAlign()
+  $("#loading, #starter, #game #drilling").hAlign().vAlign()
   $("#game #drilling #space").vAlign()
+
+  $("#loading").fadeIn(500)
+
+  setTimeout(function() {
+    $("#loading").fadeOut(500)
+
+    setTimeout(function() {
+      $("#starter").fadeIn(500)
+    }, 600)
+  }, 1500)
 }
 
 function createBackground() {
