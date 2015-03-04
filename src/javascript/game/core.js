@@ -127,15 +127,18 @@ function endGame() {
   name = prompt("Game Over!, Enter your name for high scores...")
 
   game.fadeOut(500)
-  starterScores.show().append("                                         \
-    <div class='score'>                                                 \
-      <div class='name'>" + name + "</div>                              \
-      <div class='cors'>" + score + "</div>                             \
-    </div>                                                              \
-  ")
+
+  if(name) {
+    starterScores.show().append("                                         \
+      <div class='score'>                                                 \
+        <div class='name'>" + name + "</div>                              \
+        <div class='cors'>" + score + "</div>                             \
+      </div>                                                              \
+    ")
+  }
 
   setTimeout(function() {
-    starter.fadeIn(500)
+    starter.fadeIn(500).hAlign().vAlign()
   }, 550)
 
   ROCK_BELT.forEach(function(rock) {

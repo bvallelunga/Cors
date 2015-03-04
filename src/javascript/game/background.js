@@ -1,5 +1,5 @@
 function createLayout() {
-  $("#starter").fadeIn(500)
+  $("#starter").hAlign().vAlign().fadeIn(500)
   $("#game #drilling").hAlign().vAlign()
   $("#game #drilling #space").vAlign()
 }

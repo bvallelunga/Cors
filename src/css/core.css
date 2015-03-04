@@ -7,11 +7,10 @@ html, body {
 }
 
 body #starter {
-  position: relative;
+  position: absolute;
   z-index: 2;
   display: none;
   width: 500px;
-  margin: 125px auto 0;
 }
 
 body #starter #logo {
@@ -162,14 +161,15 @@ body #game #drilling #drill {
   width: 100%;
   height: 100%;
   background: #6FAF35;
-  z-index: 2;
+  z-index: 1;
+  opacity: 0.8;
 }
 
 body #game #drilling #space {
   width: 100%;
   text-align: center;
   font-size: 18px;
-  z-index: 1;
+  z-index: 2;
   color: #fff;
 }
 
