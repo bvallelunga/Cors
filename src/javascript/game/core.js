@@ -163,10 +163,9 @@ function tick(event) {
         score += Math.ceil((100 - drill)/100) + 1
       }
 
-      if(drill < 0) {
-      	return endGame()
-    	} else if(drill < 10) {
+      if(drill < 10) {
         drillBox.addClass("depleted")
+        if(drill < 0) return endGame()
     	} else if(drill < 20) {
     	  drillBox.addClass("low")
     	} else if(drill < 60) {
@@ -220,11 +219,9 @@ function tick(event) {
   	energyBar.width(energy + "%")
   	energyBox.removeClass("mid low")
 
-  	if(energy < 0) {
-    	return endGame()
-    	energyBox.addClass("low")
-  	} else if(energy < 20) {
+  	if(energy < 20) {
       energyBox.addClass("low")
+      if(energy < 0) return endGame()
   	} else if(energy < 60) {
       energyBox.addClass("mid")
   	}
