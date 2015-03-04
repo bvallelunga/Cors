@@ -10,7 +10,7 @@ function createLayout() {
     setTimeout(function() {
       $("#starter").fadeIn(500)
     }, 600)
-  }, 1500)
+  }, 3500)
 }
 
 function createBackground() {
