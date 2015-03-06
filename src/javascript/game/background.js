@@ -6,11 +6,17 @@ function createLayout() {
 
   setTimeout(function() {
     $("#loading").fadeOut(500)
-
-    setTimeout(function() {
-      $("#starter").fadeIn(500)
-    }, 600)
+    setTimeout(showStory, 550)
   }, 3500)
+}
+
+function showStory() {
+  $("#story").show().addClass("animate")
+
+  setTimeout(function() {
+    $("#starter").fadeIn(500)
+    $("#story").fadeOut(500)
+  }, 35000)
 }
 
 function createBackground() {
