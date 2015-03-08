@@ -190,6 +190,12 @@ body #starter #play:hover:active {
   box-shadow: 0 6px 0 #385a1a, 0 -6px 0 #385a1a, -6px 0 0 #385a1a, 6px 0 0 #385a1a;
 }
 
+body #starter #instructions {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 18px;
+}
+
 body #starter #arrowKeys {
   position: fixed;
   bottom: 25px;

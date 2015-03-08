@@ -28,6 +28,7 @@ $(function() {
   window.stage = new createjs.Stage(canvas[0])
   window.ship = new createjs.Bitmap("images/ship.png")
   window.game = $("#game")
+  window.story = $("#story")
   window.starter = $("#starter")
   window.starterScores = $("#starter #highscores")
   window.starterPlay = $("#starter #play")
@@ -75,6 +76,7 @@ function resize() {
 }
 
 function startGame() {
+  story.fadeOut(500)
   starter.fadeOut(500)
   drillBox.hide()
   canvas.show()
@@ -128,7 +130,7 @@ function endGame() {
 
   game.fadeOut(500)
 
-  if(name) {
+  if(name != null && name != "") {
     starterScores.show().append("                                         \
       <div class='score'>                                                 \
         <div class='name'>" + name + "</div>                              \
@@ -165,7 +167,10 @@ function tick(event) {
 
       if(drill < 10) {
         drillBox.addClass("depleted")
-        if(drill < 0) return endGame()
+        if(drill < 0) {
+          energy -= DIFFICULTY * 0.04 * 20
+          return stopDrilling()
+        }
     	} else if(drill < 20) {
     	  drillBox.addClass("low")
     	} else if(drill < 60) {

@@ -6,8 +6,8 @@ function createLayout() {
 
   setTimeout(function() {
     $("#loading").fadeOut(500)
-    setTimeout(showStory, 550)
-  }, 3500)
+    setTimeout(showStory, 500)
+  }, 3000)
 }
 
 function showStory() {
@@ -16,7 +16,7 @@ function showStory() {
   setTimeout(function() {
     $("#starter").fadeIn(500)
     $("#story").fadeOut(500)
-  }, 35000)
+  }, 30000)
 }
 
 function createBackground() {
