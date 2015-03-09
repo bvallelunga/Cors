@@ -42,6 +42,7 @@ $(function() {
   window.drillBox = $("#game #drilling")
   window.drillBar = $("#game #drilling #drill")
   window.drillRock = null
+  window.drillBuffer = null
   window.soundtrackToggle = $("#toggleAudio img")
   window.soundtrackPlaying = true;
   window.soundtrack = $("#soundtrack").prop("volume", 0)
@@ -73,7 +74,7 @@ function registerEvents() {
   starterPlay.click(startGame)
   soundtrackToggle.click(toggleAudio)
   createjs.Ticker.addEventListener("tick", tick)
-  soundtrack.get(0).addEventListener('ended', loopAudio, false)
+  soundtrack.get(0).addEventListener('timeupdate', audioUpdate, false)
 }
 
 function resize() {
@@ -89,7 +90,6 @@ function startGame() {
   story.fadeOut(500)
   starter.fadeOut(500)
   drillBox.hide()
-  canvas.show()
 
   setTimeout(function() {
     game.show()
@@ -123,6 +123,10 @@ function stopDrilling() {
     DRILLING = false
     canvas.fadeIn(250)
   }, 250)
+
+  drillBuffer = setTimeout(function() {
+    drillBuffer = null;
+  }, 1500)
 }
 
 function createGame() {
@@ -160,9 +164,13 @@ function endGame() {
   ROCK_BELT = []
 }
 
-function loopAudio() {
-  this.currentTime = 1;
-  this.play();
+function audioUpdate() {
+  var buffer = .44
+
+  if(this.currentTime > this.duration - buffer) {
+    this.currentTime = 0
+    this.play()
+  }
 }
 
 function toggleAudio() {
@@ -231,7 +239,9 @@ function tick(event) {
     		// Check For Collision
     		if(ROCK_BELT[i]) {
       		if(!ROCK_BELT[i].drilled && ROCK_BELT[i].hitRadius(centerX, centerY, hitX, hitY)) {
-      		  return startDrilling(ROCK_BELT[i])
+      		  if(drillBuffer == null) {
+      		    return startDrilling(ROCK_BELT[i])
+      		  }
     		  }
     		}
     	}

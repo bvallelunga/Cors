@@ -11,12 +11,16 @@ function createLayout() {
 }
 
 function showStory() {
-  $("#story").show().addClass("animate")
+  if(!ACTIVE) {
+    $("#story").show().addClass("animate")
 
-  setTimeout(function() {
-    $("#starter").fadeIn(500)
-    $("#story").fadeOut(500)
-  }, 30000)
+    setTimeout(function() {
+      if(!ACTIVE) {
+        $("#starter").fadeIn(500)
+        $("#story").fadeOut(500)
+      }
+    }, 30000)
+  }
 }
 
 function createBackground() {
