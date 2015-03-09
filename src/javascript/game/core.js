@@ -42,6 +42,14 @@ $(function() {
   window.drillBox = $("#game #drilling")
   window.drillBar = $("#game #drilling #drill")
   window.drillRock = null
+  window.soundtrackToggle = $("#toggleAudio img")
+  window.soundtrackPlaying = true;
+  window.soundtrack = $("#soundtrack").prop("volume", 0)
+
+  // Start Audio
+  setTimeout(function() {
+    soundtrack.animate({volume: 1}, 5000)
+  }, 1000)
 
   // Configure Canvas
 	canvas[0].width = WIDTH;
@@ -63,7 +71,9 @@ function registerEvents() {
   $(document).keydown(keyDown)
   $(document).keyup(keyUp)
   starterPlay.click(startGame)
+  soundtrackToggle.click(toggleAudio)
   createjs.Ticker.addEventListener("tick", tick)
+  soundtrack.get(0).addEventListener('ended', loopAudio, false)
 }
 
 function resize() {
@@ -148,6 +158,23 @@ function endGame() {
   })
 
   ROCK_BELT = []
+}
+
+function loopAudio() {
+  this.currentTime = 1;
+  this.play();
+}
+
+function toggleAudio() {
+  if(soundtrackPlaying) {
+    soundtrackToggle.attr("src", "images/speakerMuted.png")
+    soundtrack.animate({volume: 0}, 1000)
+  } else {
+    soundtrackToggle.attr("src", "images/speaker.png")
+    soundtrack.animate({volume: 1}, 1000)
+  }
+
+  soundtrackPlaying = !soundtrackPlaying;
 }
 
 function tick(event) {

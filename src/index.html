@@ -48,6 +48,10 @@
         button to stop drilling. If you continue drilling when there
         are no cors left, your health will be damaged.
       </div>
+      <div id="toggleAudio">
+        <div>PLAY AUDIO</div>
+        <img src="images/speaker.png"/>
+      </div>
       <div id="arrowKeys">
         <div>USE KEYS</div>
         <img src="images/arrowKeys.png"/>
@@ -56,7 +60,11 @@
     <div id="game">
       <div id="drilling">
         <div id="drill"></div>
-        <div id="space">press<br><br>space bar</div>
+        <div id="space">
+          press space bar
+          <br><br>
+          to stop drilling...
+        </div>
       </div>
       <div id="energy-bar">
         <div id="bar"></div>
@@ -67,5 +75,6 @@
       <canvas id="canvas"></canvas>
     </div>
     <div id="background"></div>
+    <audio id="soundtrack" src="audio/loop.mp3" autoplay="autoplay" ></audio>
   </body>
 </html>

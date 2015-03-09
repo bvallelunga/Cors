@@ -6,7 +6,7 @@ function createLayout() {
 
   setTimeout(function() {
     $("#loading").fadeOut(500)
-    setTimeout(showStory, 500)
+    showStory()
   }, 3000)
 }
 
